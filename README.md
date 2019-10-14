@@ -1,5 +1,4 @@
-# CyberPatriot
-### Made by Mark Yeh
+# Cyber Patriot ### Made by Mark Yeh
 
 
 ## How To Use
