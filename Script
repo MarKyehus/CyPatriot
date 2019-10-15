@@ -43,10 +43,6 @@ else
 chmod +x ubuntu_16.10.sh
 ./ubuntu_16.10.sh
 
-#####################################################################################################################################################
-### Adding shit                                                                                                                                   ###
-#####################################################################################################################################################
-
 #### Fine tuning network parameters for better perfomance
 # Change the following parameters when a high rate of incoming connection requests result in connection failures
 echo "100000" > /proc/sys/net/core/netdev_max_backlog
