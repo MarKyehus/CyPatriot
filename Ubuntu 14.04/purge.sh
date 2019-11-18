@@ -14,7 +14,7 @@
 	sudo apt-get purge wireshark
 	sudo apt-get purge nmap
 	sudo apt-get purge john
-  sudo apt-get purge nikto
+  	sudo apt-get purge nikto
 	sudo apt-get purge nmap
 	sudo apt-get purge hashcat
 	sudo apt-get purge etherape
@@ -24,7 +24,7 @@
 	sudo apt-get purge lcrack
 	sudo apt-get purge ophcrack
 	sudo apt-get purge sl
-  sudo apt-get autoremove
+  	sudo apt-get autoremove
 
 #Puring services
 	sudo apt-get purge tomcat
