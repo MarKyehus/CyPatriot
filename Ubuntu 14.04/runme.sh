@@ -4,6 +4,15 @@ then
   exit 1
 fi
 
+#updates
+sudo apt-get upgrade
+sudo apt-get update
+
+#purges media
 cd ..
-cd Ubuntu14.0.4
-chmod -x runme.sh 
+cd Ubuntu 14.04
+chmod -x purge.sh
+./purge.sh
+
+
+
