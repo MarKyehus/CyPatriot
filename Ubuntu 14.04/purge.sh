@@ -24,6 +24,7 @@
 	sudo apt-get purge lcrack
 	sudo apt-get purge ophcrack
 	sudo apt-get purge sl
+	sudo apt-get purge Freeciv
   	sudo apt-get autoremove
 
 #Puring services
@@ -40,7 +41,7 @@
 	sudo apt-get purge telnet-server
 	sudo apt-get purge nmdb
 	sudo apt-get purge dhclient
-	sudo apt-get purge 
+	sudo apt-get purge apache2
 
 	#removes leftover directories
 	find . -name '*.mp3' -type f -delete
