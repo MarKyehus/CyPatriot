@@ -2,7 +2,7 @@
 
 ## How To Use
 
-### 1. Linux 
+### Linux 
 1. Run open a new terminal window and as root, `sudo su` run `apt update` followed by `apt install git`
 2. Run the command `git clone https://https://github.com/MarKyehus/CyPatriot.git`
 3. `cd CyberPatriot/Linux` followed by `chmod +x runme.sh` then `./runme.sh`
