@@ -1,3 +1,9 @@
+# Check Lists
+
+Various check lists to use during the competition.
+
+If you have a checklist you want to update or add, you can either contact the repository maintainer with the changes, or you can use `git` to make the changes and open a PR.
+
 ### Image Flow
 
 1. Start and register the team ID
