@@ -50,7 +50,16 @@ If you have a checklist you want to update or add, you can either contact the re
   * Kind: music, movies, pictures
   * *Caution* Be careful of removing from system or program folders.
   * *Caution* May want to consider moving file before deletion.
+  
+## Services and Programs
 
+### Services
+
+* Search and remove services that are not required.
+
+### Programs
+
+* Zenmap, nmap, wireshark, etc
 
 
 
