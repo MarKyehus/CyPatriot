@@ -4,15 +4,15 @@ Various check lists to use during the competition.
 
 If you have a checklist you want to update or add, you can either contact the repository maintainer with the changes, or you can use `git` to make the changes and open a PR.
 
-### Image Flow
+## Image Flow
 
 1. Start and register the team ID
 2. Read the Scenario and accompaning information for hints and details.
 3. Review Forensic questions and research what is needed to answer them.
 
-### Access Control
+## Access Control
 
-#### Users
+### Users
 
 * Check that all users are authorized for access to the system.
     * Remove non-authorized users.
@@ -30,7 +30,7 @@ If you have a checklist you want to update or add, you can either contact the re
     * Another account is listed as built-in with administrative permissions.
 
 
-#### Passwords
+### Passwords
 
 * Check that password requirements are enforced to mininum recommendation.
     * Mininum length:  10 characters or more.
@@ -41,6 +41,18 @@ If you have a checklist you want to update or add, you can either contact the re
 * Check that account lockouts are enforced.
     * Threshold:  5 bad passwords or less.
     * Duration:  15 minutes or more.
+## Files and Folders
+
+### Files
+
+* Search and remove media files that are not part of the OS.
+  * Extensions: mp3, mpeg, mp4, png, jpg, gif.
+  * Kind: music, movies, pictures
+  * *Caution* Be careful of removing from system or program folders.
+  * *Caution* May want to consider moving file before deletion.
+
+
+
 
 ### Complete?
 
