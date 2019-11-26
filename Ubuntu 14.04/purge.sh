@@ -25,6 +25,7 @@
 	sudo apt-get purge ophcrack
 	sudo apt-get purge sl
 	sudo apt-get purge Freeciv
+	sudo apt-get purge zenmap
   	sudo apt-get autoremove
 
 #Puring services
