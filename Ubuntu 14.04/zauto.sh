@@ -1,12 +1,36 @@
 #! /bin/bash 
+sh_menu() {
+	clear
+	echo "$(date +'%m/%d/%Y %r')"
+	echo "
+    ____                   ____        _       __ 
+   / __ \___  ___ ___     / __/_______(_)__   / /_
+  / /_/ / _ \/ -_) _ \   _\ \/ __/ __/ / _ \ / __/
+  \____/ .__/\__/_//_/  /___/\__/_/ /_/ .__/ \__/ 
+                                    /_/         
+"
+	echo "------------------"
+	echo " M A I N _ M E N U"
+	echo "------------------"
+	echo "1) Updates System"
+	echo "2) Purges Media, Services, Apps"
+	echo "3) Updates the Firewall"
+	echo "4) Updates Passwd Policies users"
+	echo "5) Check for UID's of 0 (Root Access Acounts)"
+	echo "6) Install Security Applications"
+	echo "7) Do All Above"
+	echo "8) Go to Logs"
+	echo "9) Exit"
+}
 
 # Full script running 
 function main {
   aptf		#Updates System
   erase		#Purges Media, Services, Apps
   fire		#Updates the firewall
-  pass		#Updates Passwd Policies users		
-  usersif		#Add, Remove, or Promotes User Accounts
+  pass		#Updates Passwd Policies users
+  zeroUid 	#Check for UID's of 0 (Root Access Acounts)"
+  usersif	#Add, Remove, or Promotes User Accounts
   accountif	#More User restrictions
 
 }
@@ -22,41 +46,53 @@ function cont {
 }
 
 #Updates 
-function aptf {
+aptf() {
  echo "Updating"
     sudo apt-get upgrade
     sudo apt-get update
+   stop
 }
 
 #Remove 
-function erase {
+erase() {
  echo "Removing Apps, Media, and Services"
-  sudo ./script/purge.sh 
+   sudo ./script/purge.sh 
+  stop
 }
 
 #Firewall
-function fire {
+fire() {
  echo "Hardening the firewall"
-  sudo ./script/firewall.sh
+   sudo ./script/firewall.sh
+  stop
 }
 
 #Passwd Policies
-function pass {
+pass() {
  echo "Updating Password Policies"
-  sudo ./script/firewall.sh
+   sudo ./script/firewall.sh
+  stop
 }
 
+#UID root check
+zeroUid() {
+ echo"Checking for 0Uid"
+  sudo ./script/zeroUid.sh
+ stop
+}
 #Users Accounts
-function usersif {
+usersif() {
  echo "Adds, Removes, or Promotes User Accounts"
  echo "Copy the README users into the txt file"
   sudo ./script/users.sh
+ stop
 }
 
 #Account Policy
-function accountif {
+accountif() {
  echo "Changing User Account Policies"
-  sudo ./script/account.sh
+   sudo ./script/account.sh
+  stop
 }
 
 
