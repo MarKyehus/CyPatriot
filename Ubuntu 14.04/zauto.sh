@@ -1,8 +1,4 @@
-if [[ $EUID -ne 0 ]]
-then
-  echo "You must be root to run this script."
-  exit 1
-fi
+#! /bin/bash 
 
 # Full script running 
 function main {
@@ -10,8 +6,8 @@ function main {
   erase		#Purges Media, Services, Apps
   fire		#Updates the firewall
   pass		#Updates Passwd Policies users		
-  users		#Add, Remove, or Promotes User Accounts
-  account	#More User restrictions
+  usersif		#Add, Remove, or Promotes User Accounts
+  accountif	#More User restrictions
 
 }
 
@@ -32,7 +28,7 @@ function aptf {
     sudo apt-get update
 }
 
-#Removal
+#Remove 
 function erase {
  echo "Removing Apps, Media, and Services"
   sudo ./script/purge.sh 
@@ -44,10 +40,24 @@ function fire {
   sudo ./script/firewall.sh
 }
 
-#
-echo "allow-guest=false" >> /etc/lightdm/lightdm.conf
-echo "autologin-user=" >> /etc/lightdm/lightdm.conf
+#Passwd Policies
+function pass {
+ echo "Updating Password Policies"
+  sudo ./script/firewall.sh
+}
 
+#Users Accounts
+function usersif {
+ echo "Adds, Removes, or Promotes User Accounts"
+ echo "Copy the README users into the txt file"
+  sudo ./script/users.sh
+}
+
+#Account Policy
+function accountif {
+ echo "Changing User Account Policies"
+  sudo ./script/account.sh
+}
 
 
 
@@ -135,3 +145,13 @@ echo "20" > /proc/sys/vm/dirty_background_ratio
 echo "25" > /proc/sys/vm/dirty_ratio
 
 
+#actually running the script
+unalias -a #Get rid of aliases
+echo "unalias -a" >> /root/.bashrc # gets rid of aliases when root
+cd $(dirname $(readlink -f $0))
+if [ "$(id -u)" != "0" ]; then
+	echo "Please run as root"
+	exit
+else
+	main
+fi
