@@ -8,3 +8,5 @@
 3. `cd CyberPatriot/Linux` followed by `chmod +x runme.sh` then `./runme.sh`
 4. continue through to the end of the script and watch the points sky rocket!
 5. Browse the lists folder and work on compleating the image. Dont forget to read the read me!!
+### Windows
+### Windows Server
