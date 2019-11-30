@@ -98,6 +98,14 @@ accountif() {
   stop
 }
 
+#Installation
+aptint() {
+ echo "Intalling Software"
+  echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> $PWDt/log/logger.log
+   sudo ./script/install.sh
+  stop
+} 
+
 menu() {
 	clear
 	echo "
@@ -118,7 +126,7 @@ menu() {
 	echo "6) Check for UID's of 0 (Root Access Acounts)"	#zeroUid
 	echo "7) Add, Remove, or Promotes User Accounts" 	#usersif
 	echo "8) User Account Policies" 			#accountif
-	echo "9) Go to Logs"
+	echo "9) Intall Software" 				#aptint
 	echo "10) Exit"
 }
 
@@ -157,11 +165,14 @@ read_choice() {
 		
 	elif [ $REPLY == "8" ]; then
 		accountif;
-		
+	
 	elif [ $REPLY == "9" ]; then
+		aptint;
+
+	elif [ $REPLY == "10"] then
 		gedit $PWDt/log/logger.log
 
-	elif [ $REPLY == "10" ]; then
+	elif [ $REPLY == "11"]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
 		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/logger.log
 		exit 0;
