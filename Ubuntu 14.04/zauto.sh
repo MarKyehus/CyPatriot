@@ -6,11 +6,12 @@ fi
 
 # Full script running 
 function main {
-  aptf		#update
-  erase		#purge
-  fire		#firewall 
-  
-  
+  aptf		#Updates System
+  erase		#Purges Media, Services, Apps
+  fire		#Updates the firewall
+  pass		#Updates Passwd Policies users		
+  users		#Add, Remove, or Promotes User Accounts
+
 }
 
 #updates
