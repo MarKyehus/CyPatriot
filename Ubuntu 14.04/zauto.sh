@@ -11,33 +11,12 @@ function main {
   fire		#Updates the firewall
   pass		#Updates Passwd Policies users		
   users		#Add, Remove, or Promotes User Accounts
+  account	#More User restrictions
 
 }
-
-#updates
-function aptf {
- echo "Updating"
-    sudo apt-get upgrade
-    sudo apt-get update
-}
-
-#purges media
-function erase {
- echo "Removing Apps, Media, and Services
-  sudo ./script/purge.sh 
-}
-
-#firewall harden 
-function fire {
- echo "Hardening the firewall"
-  sudo ./script/firewall.sh
-}
-
-echo "allow-guest=false" >> /etc/lightdm/lightdm.conf
-echo "autologin-user=" >> /etc/lightdm/lightdm.conf
 
 function cont {
-	read -n1 -p "Press space to continue, AOK to quit" key
+	read -n1 -p "Press space to continue, EX to quit" key
 	if [ "$key" = "" ]; then
 		echo "Moving forward..."
 	else
@@ -45,6 +24,30 @@ function cont {
 		exit 1
 	fi
 }
+
+#Updates 
+function aptf {
+ echo "Updating"
+    sudo apt-get upgrade
+    sudo apt-get update
+}
+
+#Removal
+function erase {
+ echo "Removing Apps, Media, and Services"
+  sudo ./script/purge.sh 
+}
+
+#Firewall
+function fire {
+ echo "Hardening the firewall"
+  sudo ./script/firewall.sh
+}
+
+#
+echo "allow-guest=false" >> /etc/lightdm/lightdm.conf
+echo "autologin-user=" >> /etc/lightdm/lightdm.conf
+
 
 
 
