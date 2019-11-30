@@ -1,6 +1,6 @@
 echo "securing the firewall"
 
-	apt-get remove -y ufw
+	apt-get install -y ufw
 	apt-get install -y iptables
 	apt-get install -y iptables-persistent
 
