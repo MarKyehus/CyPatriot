@@ -15,7 +15,6 @@ oldbuntu() {
 #Debian
 
 main() {
-	clear
 echo "
            _
 |‾‾|      |_|                             \‾\      /‾/
