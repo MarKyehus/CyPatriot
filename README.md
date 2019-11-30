@@ -1,7 +1,7 @@
 # Cyber Patriot 
 
 ## How To Use
-
+*Scripts can cause penalties and break images*
 ### Linux 
 1. Run open a new terminal window and as root, `sudo su` run `apt update` followed by `apt install git`
 2. Run the command `git clone https://https://github.com/MarKyehus/CyPatriot.git`
