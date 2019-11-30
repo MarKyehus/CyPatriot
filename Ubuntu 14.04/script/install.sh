@@ -47,10 +47,7 @@ echo -n "AntiVirus [Y/n] "
 read option
 if [[ $option =~ ^[Yy]$ ]]
 then
-  sudo apt-get install chkrootkit
-  sudo apt-get install rkhunter
-  sudo apt-get install lynis
-  sudo apt-get install clamav
+  sudo apt-get install chkrootkit rkhunter lynis clamav
   #chrootkit 
     echo "starting chkrootkit scan"
       chkrootkit -q
