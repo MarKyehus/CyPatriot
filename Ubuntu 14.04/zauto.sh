@@ -58,6 +58,13 @@ fire() {
   stop
 }
 
+#Firewall Extra 
+firecont() {
+  echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt/log/logger.log
+   sudo ./script/firecont.sh
+  stop
+} 
+
 #Passwd Policies
 passif() {
  echo "Updating Password Policies"
@@ -105,13 +112,14 @@ menu() {
 	echo "------------------"
 	echo "1) Updates System"				#aptf
 	echo "2) Purges Media, Services, Apps"			#erase
-	echo "3) Updates the Firewall"				#fire
-	echo "4) Updates Passwd Policies users"			#passif
-	echo "5) Check for UID's of 0 (Root Access Acounts)"	#zeroUid
-	echo "6) Add, Remove, or Promotes User Accounts" 	#usersif
-	echo "7) User Account Policies" 			#accountif
-	echo "8) Go to Logs"
-	echo "9) Exit"
+	echo "3) Update the Firewall"				#fire
+	echo "4) Stronger Firewall"				#firecont
+	echo "5) Update Passwd Policies users"			#passif
+	echo "6) Check for UID's of 0 (Root Access Acounts)"	#zeroUid
+	echo "7) Add, Remove, or Promotes User Accounts" 	#usersif
+	echo "8) User Account Policies" 			#accountif
+	echo "9) Go to Logs"
+	echo "10) Exit"
 }
 
 stop() {
@@ -134,23 +142,26 @@ read_choice() {
 	
 	elif [ $REPLY == "3" ]; then
 		fire;
-
+		
 	elif [ $REPLY == "4" ]; then
-		passif;
+		firecont;
 
 	elif [ $REPLY == "5" ]; then
+		passif;
+
+	elif [ $REPLY == "6" ]; then
 		zeroUid;
 		
-	elif [ $REPLY == "6" ]; then
+	elif [ $REPLY == "7" ]; then
 		usersif;
 		
-	elif [ $REPLY == "7" ]; then
+	elif [ $REPLY == "8" ]; then
 		accountif;
 		
-	elif [ $REPLY == "8" ]; then
+	elif [ $REPLY == "9" ]; then
 		gedit $PWDt/log/logger.log
 
-	elif [ $REPLY == "9" ]; then
+	elif [ $REPLY == "10" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
 		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/logger.log
 		exit 0;
