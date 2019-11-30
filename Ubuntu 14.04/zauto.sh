@@ -6,25 +6,34 @@ fi
 
 # Full script running 
 function main {
-  aptf
-  erase
+  aptf		#update
+  erase		#purge
+  fire		#firewall 
+  
   
 }
 
 #updates
 function aptf {
+ echo "Updating"
     sudo apt-get upgrade
     sudo apt-get update
 }
 
 #purges media
 function erase {
-  cd ..
-  cd Ubuntu 14.04
-  chmod -x purge.sh
-  ./purge.sh
+ echo "Removing Apps, Media, and Services
+  sudo ./script/purge.sh 
 }
 
+#firewall harden 
+function fire {
+ echo "Hardening the firewall"
+  sudo ./script/firewall.sh
+}
+
+echo "allow-guest=false" >> /etc/lightdm/lightdm.conf
+echo "autologin-user=" >> /etc/lightdm/lightdm.conf
 
 function cont {
 	read -n1 -p "Press space to continue, AOK to quit" key
