@@ -106,6 +106,16 @@ aptint() {
   stop
 } 
 
+stop() {
+	echo "Continue? (Y/N) "
+	read continu
+	if [ "$continu" = "N" ] || [ "$continu" = "n" ]; then
+		echo "$(date +'%m/%d/%Y %r'): Ending script"
+		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/logger.log
+		exit;
+	fi
+}
+
 menu() {
 	clear
 	echo "
@@ -128,16 +138,6 @@ menu() {
 	echo "8) User Account Policies" 			#accountif
 	echo "9) Intall Software" 				#aptint
 	echo "10) Exit"
-}
-
-stop() {
-	echo "Continue? (Y/N) "
-	read continu
-	if [ "$continu" = "N" ] || [ "$continu" = "n" ]; then
-		echo "$(date +'%m/%d/%Y %r'): Ending script"
-		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/logger.log
-		exit;
-	fi
 }
 
 read_choice() {
