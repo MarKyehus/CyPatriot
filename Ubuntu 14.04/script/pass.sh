@@ -21,4 +21,3 @@ sudo sed -i '1 s/^/password requisite pam_cracklib.so retry=3 minlen=8 difok=3 r
 
 
 
-done
