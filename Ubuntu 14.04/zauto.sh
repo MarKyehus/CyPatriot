@@ -1,13 +1,44 @@
-#! /bin/bash 
-sh_menu() {
+#! /bin/bash
+#Author: Imagine Virt [12-3253], OATS 
+#Title: WCTA Cyberpatriot Script, Linux 
+
+#Variables
+PWDt=$(pwd)
+
+#Startup
+echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude"
+echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude" >> $PWDt/log/mhs.log
+apt-get install cowsay -y &> /dev/null
+if [ "$?" -eq "1" ]; then
+   echo "$(date +'%m/%d/%Y %r'): This script cannot access aptitude properly."
+   echo "$(date +'%m/%d/%Y %r'): Apititude check failed" >> $PWDt/log/mhs.log
+   exit 1
+fi
+unalias -a
+echo "unalias -a" >> ~/.bashrc
+echo "unalias -a" >> /root/.bashrc
+echo "$(date +'%m/%d/%Y %r'): Starting script" >> $PWDt/log/mhs.log
+
+if ! [ -d $PWDt/config ]; then
+	echo "$(date +'%m/%d/%Y %r'): Please Cd into cyberpat directory and run the script there."
+	echo "$(date +'%m/%d/%Y %r'): Please Cd into cyberpat directory and run the script there." >> $PWDt/log/mhs.log
+	exit
+fi
+
+if [ "$EUID" -ne 0 ]; then
+	echo "$(date +'%m/%d/%Y %r'): Run as Root" 
+	echo "$(date +'%m/%d/%Y %r'): Run as Root" >> $PWDt/log/mhs.log
+	exit
+fi
+
+menu() {
 	clear
-	echo "$(date +'%m/%d/%Y %r')"
 	echo "
     ____                   ____        _       __ 
    / __ \___  ___ ___     / __/_______(_)__   / /_
   / /_/ / _ \/ -_) _ \   _\ \/ __/ __/ / _ \ / __/
   \____/ .__/\__/_//_/  /___/\__/_/ /_/ .__/ \__/ 
-                                    /_/         
+      /_/                            /_/         
 "
 	echo "------------------"
 	echo " M A I N _ M E N U"
@@ -17,31 +48,19 @@ sh_menu() {
 	echo "3) Updates the Firewall"
 	echo "4) Updates Passwd Policies users"
 	echo "5) Check for UID's of 0 (Root Access Acounts)"
-	echo "6) Install Security Applications"
-	echo "7) Do All Above"
+	echo "6) Add, Remove, or Promotes User Accounts"
+	echo "7) More User restrictions"
 	echo "8) Go to Logs"
 	echo "9) Exit"
 }
 
-# Full script running 
-function main {
-  aptf		#Updates System
-  erase		#Purges Media, Services, Apps
-  fire		#Updates the firewall
-  pass		#Updates Passwd Policies users
-  zeroUid 	#Check for UID's of 0 (Root Access Acounts)"
-  usersif	#Add, Remove, or Promotes User Accounts
-  accountif	#More User restrictions
-
-}
-
-function cont {
-	read -n1 -p "Press space to continue, EX to quit" key
-	if [ "$key" = "" ]; then
-		echo "Moving forward..."
-	else
-		echo "Quitting script..."
-		exit 1
+stop() {
+	echo "Continue? (Y/N) "
+	read continu
+	if [ "$continu" = "N" ] || [ "$continu" = "n" ]; then
+		echo "$(date +'%m/%d/%Y %r'): Ending script"
+		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/mhs.log
+		exit;
 	fi
 }
 
@@ -181,13 +200,3 @@ echo "20" > /proc/sys/vm/dirty_background_ratio
 echo "25" > /proc/sys/vm/dirty_ratio
 
 
-#actually running the script
-unalias -a #Get rid of aliases
-echo "unalias -a" >> /root/.bashrc # gets rid of aliases when root
-cd $(dirname $(readlink -f $0))
-if [ "$(id -u)" != "0" ]; then
-	echo "Please run as root"
-	exit
-else
-	main
-fi
