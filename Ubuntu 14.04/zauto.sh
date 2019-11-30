@@ -162,7 +162,7 @@ trap '' SIGINT SIGQUIT SIGTSTP
 
 while true; do
 
-	sh_menu
+	menu
 	read_choice
 
 done
