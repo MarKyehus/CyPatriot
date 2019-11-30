@@ -8,7 +8,6 @@ fi
 oldbuntu() {
  echo "Entering Ubuntu 14.04"
    sudo ./Ubuntu 14.04/zauto.sh
-  stop
 }
 
 #Ubuntu 16.10
