@@ -4,15 +4,91 @@ then
   exit 1
 fi
 
+# Full script running 
+function main {
+  aptf
+  erase
+  
+}
+
 #updates
-sudo apt-get upgrade
-sudo apt-get update
+function aptf {
+    sudo apt-get upgrade
+    sudo apt-get update
+}
 
 #purges media
-cd ..
-cd Ubuntu 14.04
-chmod -x purge.sh
-./purge.sh
+function erase {
+
+  cd ..
+  cd Ubuntu 14.04
+  chmod -x purge.sh
+  ./purge.sh
+}
+function cont {
+	read -n1 -p "Press space to continue, AOK to quit" key
+	if [ "$key" = "" ]; then
+		echo "Moving forward..."
+	else
+		echo "Quitting script..."
+		exit 1
+	fi
+}
+
+
+# hardens network security
+function noport {
+	echo ""
+	echo "Enabling Uncomplicated Firewall..."
+	ufw enable
+	cont
+
+	echo "Hardening IP security..."
+
+	netsecfilea="$(find /etc/sysctl.d/ -maxdepth 1 -type f -name '*network-security.conf')" # finds default net-sec config file
+	netsecfile="${netsecfilea// }" # eliminates whitespace from the string (if there is any)
+	netsecfileb=$netsecfile"~" # names the backup file
+
+	cp $netsecfile $netsecfileb # creates a backup of the config file
+	chmod a-w $netsecfileb # makes backup read-only
+
+	cp /etc/sysctl.conf /etc/sysctl.conf~ # backup sysctl config
+	chmod a-w /etc/sysctl.conf~ # read only
+
+	echo "Backups created"
+
+	# 3 cases - found file, no file, multiple files
+	#TODO test the line by line method for all cases
+	if [ -z $netsecfile ] # true if FIND didn't find anything
+	then
+		echo "find could not find the file you were looking for, attempting to use sysctl -w"
+		# reads from ipsec2 line by line using sysctl command to change settings
+
+		file="../resources/ipsec2.conf"
+		while IFS= read -r line
+		do
+			# reads from ipsec2 line by line and uses sysctl command
+			sysctl -w "$line"
+		done <"$file"
+		sysctl -p
+
+	else
+		echo "File was found, appending settings to end of file"
+		# if the file exists, we will append our settings from our file
+
+		cat ../resources/ipsec.conf >> "$netsecfile"
+		service procps start
+
+	fi
+	cont
+
+	echo "Verify rules..."
+	ufw status
+	cont
+	echo "Finished managing rules"
+}
+
+
 
 
 
