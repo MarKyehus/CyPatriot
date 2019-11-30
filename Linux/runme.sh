@@ -1,3 +1,7 @@
+#! /bin/bash
+#Author: Imagine Virt [12-3253], OATS 
+#Title: WCTA Cyberpatriot Script, Linux
+
 if [[ $EUID -ne 0 ]]
 then
   echo "You must be root to run this script."
