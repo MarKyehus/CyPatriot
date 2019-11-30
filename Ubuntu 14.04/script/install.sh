@@ -1,6 +1,6 @@
 #! /bin/bash
-# MySQL
 
+# MySQL
 echo -n "MySQL [Y/n] "
 read option
 if [[ $option =~ ^[Yy]$ ]]
