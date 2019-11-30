@@ -81,4 +81,3 @@ else
   sudo apt-get -y purge clamav*
 fi
 
-done
