@@ -1,5 +1,6 @@
 #! /bin/bash
 # MySQL
+
 echo -n "MySQL [Y/n] "
 read option
 if [[ $option =~ ^[Yy]$ ]]
@@ -39,6 +40,48 @@ then
   sudo service vsftpd restart
 else
   sudo apt-get -y purge vsftpd*
+fi
+
+# AntiVirus
+echo -n "AntiVirus [Y/n] "
+read option
+if [[ $option =~ ^[Yy]$ ]]
+then
+  sudo apt-get install chkrootkit
+  sudo apt-get install rkhunter
+  sudo apt-get install lynis
+  sudo apt-get install clamav
+  #chrootkit 
+    echo "starting chkrootkit scan"
+      chkrootkit -q
+	  cont
+    
+  #rkhunter
+  echo "starting rkhunter scan"
+      rkhunter --update
+      rkhunter --propupd #Run this once at install
+      rkhunter -c --enable all --disable none
+	  cont
+  
+  #lynis
+    echo "starting lynis scan"
+      cd /usr/share/lynis/
+      /usr/share/lynis/lynis update info
+      /usr/share/lynis/lynis audit system
+    cont
+  
+  #clamav
+    echo "starting clamav scan"
+      systemctl stop clamav-freshclam
+      freshclam --stdout
+      systemctl start clamav-freshclam
+      clamscan -r -i --stdout --exclude-dir="^/sys" /
+    cont
+else
+  sudo apt-get -y purge chkrootkit*
+  sudo apt-get -y purge rkhunter*
+  sudo apt-get -y purge lynis*
+  sudo apt-get -y purge clamav*
 fi
 
 done
