@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #--------Removing Files----
+echo "Removing Files"
 	sudo apt-get purge netcat-*
 	sudo apt-get purge aircrack-ng
 	sudo apt-get purge airmon-ng
@@ -29,6 +30,7 @@
   	sudo apt-get autoremove
 
 #Puring services
+echo "Removing Services"
 	sudo apt-get purge tomcat
 	sudo apt-get purge tomcat6
 	sudo apt-get purge postgresql
@@ -44,7 +46,8 @@
 	sudo apt-get purge dhclient
 	sudo apt-get purge apache2
 
-	#removes leftover directories
+#Remove Media
+echo "Removing Media"
 	find . -name '*.mp3' -type f -delete
 	find . -name '*.mov' -type f -delete
 	sudo rm -rf
