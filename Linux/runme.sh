@@ -1,5 +1,5 @@
 #! /bin/bash
-#Author: Imagine Virt
+#Author: Imagine Virt, OATS
 #Title: WCTA Cyberpatriot Script, Linux
 
 if [[ $EUID -ne 0 ]]
