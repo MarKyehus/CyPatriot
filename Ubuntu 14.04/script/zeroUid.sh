@@ -50,4 +50,4 @@ echo "$(date +'%m/%d/%Y %r'): Checking for UID's of 0 (Root Access Accounts)"
 		echo "$(date +'%m/%d/%Y %r'): No Zero UID Users"
 		echo "$(date +'%m/%d/%Y %r'): No Zero UID Users" >> $PWDt/log/mhs.log
 	fi
-		stop
+
