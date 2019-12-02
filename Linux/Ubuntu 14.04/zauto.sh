@@ -106,6 +106,7 @@ aptint() {
   stop
 } 
 
+#Pause before each sub-script
 stop() {
 	echo "Continue? (Y/N) "
 	read continu
@@ -116,6 +117,7 @@ stop() {
 	fi
 }
 
+#Menu of Ubuntu 14.04 
 menu() {
 	clear
 	echo "
@@ -137,9 +139,12 @@ menu() {
 	echo "7) Add, Remove, or Promotes User Accounts" 	#usersif
 	echo "8) User Account Policies" 			#accountif
 	echo "9) Intall Software" 				#aptint
-	echo "10) Exit"
+	echo "10) Auto Run" 					#runs all programs besides usersif and firecont
+	echo "11) Open Log"
+	echo "12) Exit"
 }
 
+#Menu Selections
 read_choice() {
 	read -p "Enter choice 1-9: "
 	if  [ $REPLY == "1" ]; then
@@ -168,11 +173,20 @@ read_choice() {
 	
 	elif [ $REPLY == "9" ]; then
 		aptint;
+		
+	elif [ $REPLY == "10" ]; then
+		aptf;
+		erase;
+		fire;
+		passif;
+		zeroUid;
+		accountif;
+		aptint;
 
-	elif [ $REPLY == "10"] then
+	elif [ $REPLY == "11"] then
 		gedit $PWDt/log/logger.log
 
-	elif [ $REPLY == "11"]; then
+	elif [ $REPLY == "12"]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
 		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/logger.log
 		exit 0;
