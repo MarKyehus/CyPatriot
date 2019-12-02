@@ -20,8 +20,8 @@ echo "unalias -a" >> /root/.bashrc
 echo "$(date +'%m/%d/%Y %r'): Starting script" >> $PWDt/log/logger.log
 
 if ! [ -d $PWDt/config ]; then
-	echo "$(date +'%m/%d/%Y %r'): Please Cd into cyberpat directory and run the script there."
-	echo "$(date +'%m/%d/%Y %r'): Please Cd into cyberpat directory and run the script there." >> $PWDt/log/logger.log
+	echo "$(date +'%m/%d/%Y %r'): Please Cd into Ubuntu 14.40 directory and run the script there."
+	echo "$(date +'%m/%d/%Y %r'): Please Cd into Ubuntu 14.40 directory and run the script there." >> $PWDt/log/logger.log
 	exit
 fi
 
@@ -119,10 +119,10 @@ stop() {
 menu() {
 	clear
 	echo "
-    ____                   ____        _       __ 
-   / __ \___  ___ ___     / __/_______(_)__   / /_
-  / /_/ / _ \/ -_) _ \   _\ \/ __/ __/ / _ \ / __/
-  \____/ .__/\__/_//_/  /___/\__/_/ /_/ .__/ \__/ 
+    ____                   ____        _      __ 
+   / __ \___  ___ ___     / __/_______(_)__  / /_
+  / /_/ / _ \/ -_) _ \   _\ \/ __/ __/ / _ \/ __/
+  \____/ .__/\__/_//_/  /___/\__/_/ /_/ .__/\__/ 
       /_/                            /_/         
 "
 	echo "------------------"
