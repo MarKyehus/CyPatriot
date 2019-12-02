@@ -63,7 +63,8 @@ If you have a checklist you want to update or add, you can either contact the re
 * Zenmap, nmap, wireshark, etc
 
 ## Security
- 1) Allow daily updates
+
+* Allow daily updates
 
 ## Complete?
 
