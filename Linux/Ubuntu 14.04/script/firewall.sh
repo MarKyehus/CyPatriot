@@ -71,6 +71,8 @@ echo "securing the firewall"
 # Disable IPV6
  echo "1" > /proc/sys/net/ipv6/conf/all/disable_ipv6
  echo "1" > /proc/sys/net/ipv6/conf/default/disable_ipv6 
+#Prevent IP spoofing
+ echo "nospoof on" > sudo tee -a /etc/host.conf
  
 # File system tuning #
 
