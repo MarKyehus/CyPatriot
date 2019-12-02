@@ -1,7 +1,7 @@
 #! /bin/bash
 
 echo "$(date +'%m/%d/%Y %r'): Checking for UID's of 0 (Root Access Accounts)"
-	echo "$(date +'%m/%d/%Y %r'): Checking for UID's of 0 (Root Access Accounts)" >> $PWDt/log/mhs.log
+	echo "$(date +'%m/%d/%Y %r'): Checking for UID's of 0 (Root Access Accounts)" >> $PWDt/log/logger.log
 	touch $PWDt/log/zerouidusers
 	touch $PWDt/log/uidusers
 
@@ -10,7 +10,7 @@ echo "$(date +'%m/%d/%Y %r'): Checking for UID's of 0 (Root Access Accounts)"
 	if [ -s $PWDt/log/zerouidusers ]
 	then
 		echo "$(date +'%m/%d/%Y %r'): There are Zero UID Users! I'm fixing it now!"
-		echo "$(date +'%m/%d/%Y %r'): There are Zero UID Users! I'm fixing it now!" >> $PWDt/log/mhs.log
+		echo "$(date +'%m/%d/%Y %r'): There are Zero UID Users! I'm fixing it now!" >> $PWDt/log/logger.log
 
 		while IFS='' read -r line || [[ -n "$line" ]]; do
 			thing=1
@@ -20,7 +20,7 @@ echo "$(date +'%m/%d/%Y %r'): Checking for UID's of 0 (Root Access Accounts)"
 				if [ -s $PWDt/log/uidusers ]
 				then
 					echo "Couldn't find unused UID. Trying Again... $(date +'%m/%d/%Y %r')"
-					echo "Couldn't find unused UID. Trying Again... $(date +'%m/%d/%Y %r')" >> $PWDt/log/mhs.log
+					echo "Couldn't find unused UID. Trying Again... $(date +'%m/%d/%Y %r')" >> $PWDt/log/logger.log
 				else
 					break
 				fi
@@ -41,13 +41,13 @@ echo "$(date +'%m/%d/%Y %r'): Checking for UID's of 0 (Root Access Accounts)"
 		if [ -s $PWDt/log/zerouidusers ]
 		then
 			echo "$(date +'%m/%d/%Y %r'): WARNING: UID CHANGE UNSUCCESSFUL!"
-			echo "$(date +'%m/%d/%Y %r'): WARNING: UID CHANGE UNSUCCESSFUL!" >> $PWDt/log/mhs.log
+			echo "$(date +'%m/%d/%Y %r'): WARNING: UID CHANGE UNSUCCESSFUL!" >> $PWDt/log/logger.log
 		else
 			echo "$(date +'%m/%d/%Y %r'): Successfully Changed Zero UIDs!"
-			echo "$(date +'%m/%d/%Y %r'): Successfully Changed Zero UIDs!" >> $PWDt/log/mhs.log
+			echo "$(date +'%m/%d/%Y %r'): Successfully Changed Zero UIDs!" >> $PWDt/log/logger.log
 		fi
 	else
 		echo "$(date +'%m/%d/%Y %r'): No Zero UID Users"
-		echo "$(date +'%m/%d/%Y %r'): No Zero UID Users" >> $PWDt/log/mhs.log
+		echo "$(date +'%m/%d/%Y %r'): No Zero UID Users" >> $PWDt/log/logger.log
 	fi
 
