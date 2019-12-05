@@ -183,7 +183,7 @@ read_choice() {
 		accountif;
 		aptint;
 
-	elif [ $REPLY == "11"] then
+	elif [ $REPLY == "11"]; then
 		gedit $PWDt/log/logger.log
 
 	elif [ $REPLY == "12"]; then
