@@ -6,30 +6,30 @@
 PWDt=$(pwd)
 
 #Startup
-echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude"
-echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude" >> $PWDt/log/logger.log
-apt-get install cowsay -y &> /dev/null
-if [ "$?" -eq "1" ]; then
-   echo "$(date +'%m/%d/%Y %r'): This script cannot access aptitude properly."
-   echo "$(date +'%m/%d/%Y %r'): Apititude check failed" >> $PWDt/log/logger.log
-   exit 1
-fi
-unalias -a
-echo "unalias -a" >> ~/.bashrc
-echo "unalias -a" >> /root/.bashrc
-echo "$(date +'%m/%d/%Y %r'): Starting script" >> $PWDt/log/logger.log
+#echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude"
+#echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude" >> $PWDt/log/logger.log
+#apt-get install cowsay -y &> /dev/null
+#if [ "$?" -eq "1" ]; then
+#   echo "$(date +'%m/%d/%Y %r'): This script cannot access aptitude properly."
+#   echo "$(date +'%m/%d/%Y %r'): Apititude check failed" >> $PWDt/log/logger.log
+#   exit 1
+#fi
+#unalias -a
+#echo "unalias -a" >> ~/.bashrc
+#echo "unalias -a" >> /root/.bashrc
+#echo "$(date +'%m/%d/%Y %r'): Starting script" >> $PWDt/log/logger.log
 
-if ! [ -d $PWDt/config ]; then
-	echo "$(date +'%m/%d/%Y %r'): Please Cd into Ubuntu 14.40 directory and run the script there."
-	echo "$(date +'%m/%d/%Y %r'): Please Cd into Ubuntu 14.40 directory and run the script there." >> $PWDt/log/logger.log
-	exit
-fi
+#if ! [ -d $PWDt/config ]; then
+#	echo "$(date +'%m/%d/%Y %r'): Please Cd into Ubuntu 14.40 directory and run the script there."
+#	echo "$(date +'%m/%d/%Y %r'): Please Cd into Ubuntu 14.40 directory and run the script there." >> $PWDt/log/logger.log
+#	exit
+#fi
 
-if [ "$EUID" -ne 0 ]; then
-	echo "$(date +'%m/%d/%Y %r'): Run as Root" 
-	echo "$(date +'%m/%d/%Y %r'): Run as Root" >> $PWDt/log/logger.log
-	exit
-fi
+#if [ "$EUID" -ne 0 ]; then
+#	echo "$(date +'%m/%d/%Y %r'): Run as Root" 
+#	echo "$(date +'%m/%d/%Y %r'): Run as Root" >> $PWDt/log/logger.log
+#	exit
+#fi
 
 ## Functions ##
 
