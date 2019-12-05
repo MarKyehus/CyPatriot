@@ -39,6 +39,8 @@ PWDt=$(pwd)
 aptf() {
  echo "Updating System"
   echo "$(date +'%m/%d/%Y %r'): Updating System" >> $PWDt/log/logger.log
+    sudo chattr -i /etc/apt/sources.list
+    sudo chmod 777 /etc/apt/sources.list
     sudo apt-get upgrade
     sudo apt-get update
    stop
