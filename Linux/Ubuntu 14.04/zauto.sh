@@ -5,7 +5,8 @@
 #Variables
 PWDt=$(pwd)
 
-#Startup
+#---------------------------------ERROR-----------------------------------------------
+#Startup   
 #echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude"
 #echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude" >> $PWDt/log/logger.log
 #apt-get install cowsay -y &> /dev/null
@@ -30,6 +31,7 @@ PWDt=$(pwd)
 #	echo "$(date +'%m/%d/%Y %r'): Run as Root" >> $PWDt/log/logger.log
 #	exit
 #fi
+#--------------------------------------------------------------------------------------------
 
 ## Functions ##
 
