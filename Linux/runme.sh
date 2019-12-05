@@ -43,7 +43,7 @@ choose() {
 	if  [ $REPLY == "1" ]; then
 		oldbuntu;
 
-	elif [ $REPLY == "4"]; then
+	elif [ $REPLY == "4" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
 		exit;
 
