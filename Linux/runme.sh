@@ -11,8 +11,8 @@ fi
 #Ubuntu 14.04
 oldbuntu() {
  echo "Entering Ubuntu 14.04"
-   chmod +x ./Ubuntu\ 14.04/zauto.sh
-   sudo ./Ubuntu\ 14.04/zauto.sh
+   chmod +x ~/Ubuntu\ 14.04/zauto.sh
+   sudo ~/Ubuntu\ 14.04/zauto.sh
 }
 
 #Ubuntu 16.10
