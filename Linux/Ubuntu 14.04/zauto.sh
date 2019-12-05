@@ -48,6 +48,7 @@ aptf() {
 erase() {
  echo "Removing Apps, Media, and Services"
   echo "$(date +'%m/%d/%Y %r'): Removing Apps, Media, and Services" >> $PWDt/log/logger.log
+   chmod +x ./script/purge.sh 
    sudo ./script/purge.sh 
   stop
 }
@@ -56,6 +57,7 @@ erase() {
 fire() {
  echo "Hardening the firewall"
   echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt/log/logger.log
+   chmod +x ./script/firewall.sh
    sudo ./script/firewall.sh
   stop
 }
@@ -63,6 +65,7 @@ fire() {
 #Firewall Extra 
 firecont() {
   echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt/log/logger.log
+   chmod +x ./script/firewall.sh
    sudo ./script/firecont.sh
   stop
 } 
@@ -71,7 +74,8 @@ firecont() {
 passif() {
  echo "Updating Password Policies"
   echo "$(date +'%m/%d/%Y %r'): Updating Password Policies" >> $PWDt/log/logger.log
-   sudo ./script/firewall.sh
+   chmod +x ./script/pass.sh
+   sudo ./script/pass.sh
   stop
 }
 
@@ -79,23 +83,27 @@ passif() {
 zeroUid() {
  echo "Checking for 0Uid"
   echo "$(date +'%m/%d/%Y %r'): Checking for Root Users" >> $PWDt/log/logger.log
+  chmod +x ./script/pass.sh
   sudo ./script/zeroUid.sh
  stop
 }
 
+#-------------------------------ERROR-----------------------
 #Users Accounts
-usersif() {
- echo "Adding, Removing, or Promoting User Accounts"
-  echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt/log/logger.log
- echo "Copy the README users into the txt file"
-  sudo ./script/users.sh
- stop
-}
+#usersif() {
+# echo "Adding, Removing, or Promoting User Accounts"
+#  echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt/log/logger.log
+# echo "Copy the README users into the txt file"
+#  sudo ./script/users.sh
+# stop
+#}
+#-----------------------------------------------------------
 
 #Account Policy
 accountif() {
  echo "Changing User Account Policies"
   echo "$(date +'%m/%d/%Y %r'): Changing User Account Policies" >> $PWDt/log/logger.log
+   chmod +x ./script/account.sh
    sudo ./script/account.sh
   stop
 }
@@ -104,6 +112,7 @@ accountif() {
 aptint() {
  echo "Intalling Software"
   echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> $PWDt/log/logger.log
+   chmod +x ./script/install.sh
    sudo ./script/install.sh
   stop
 } 
@@ -167,8 +176,8 @@ read_choice() {
 	elif [ $REPLY == "6" ]; then
 		zeroUid;
 		
-	elif [ $REPLY == "7" ]; then
-		usersif;
+	#elif [ $REPLY == "7" ]; then
+	#	usersif;
 		
 	elif [ $REPLY == "8" ]; then
 		accountif;
@@ -191,7 +200,7 @@ read_choice() {
 	elif [ $REPLY == "12"]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
 		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/logger.log
-		exit 0;
+		exit;
 
 	fi
 }
