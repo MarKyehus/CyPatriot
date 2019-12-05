@@ -159,7 +159,7 @@ menu() {
 
 #Menu Selections
 read_choice() {
-	read -p "Enter choice 1-9: "
+	read -p "Enter choice 1-12: "
 	if  [ $REPLY == "1" ]; then
 		aptf;
 
