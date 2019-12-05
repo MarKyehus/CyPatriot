@@ -90,16 +90,16 @@ zeroUid() {
  stop
 }
 
-#-------------------------------ERROR-----------------------
-#Users Accounts
-#usersif() {
-# echo "Adding, Removing, or Promoting User Accounts"
-#  echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt/log/logger.log
-# echo "Copy the README users into the txt file"
-#  sudo ./script/users.sh
-# stop
-#}
-#-----------------------------------------------------------
+
+Users Accounts
+usersif() {
+ echo "Adding, Removing, or Promoting User Accounts"
+  echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt/log/logger.log
+ echo "Copy the README users into the txt file"
+  sudo ./script/users.sh
+ stop
+}
+
 
 #Account Policy
 accountif() {
@@ -196,10 +196,10 @@ read_choice() {
 		accountif;
 		aptint;
 
-	elif [ $REPLY == "11"]; then
+	elif [ $REPLY == "11" ]; then
 		gedit $PWDt/log/logger.log
 
-	elif [ $REPLY == "12"]; then
+	elif [ $REPLY == "12" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
 		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/logger.log
 		exit;
