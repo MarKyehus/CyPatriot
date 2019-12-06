@@ -11,8 +11,8 @@ fi
 #Ubuntu 14.04
 oldbuntu() {
  echo "Entering Ubuntu 14.04"
-   chmod +x ~/Ubuntu\ 14.04/zauto.sh
-   sudo ~/Ubuntu\ 14.04/zauto.sh
+   cd ..
+   cd CyPatriot/Linux/Ubuntu\ 14.04
 }
 
 #Ubuntu 16.10
@@ -45,6 +45,7 @@ choose() {
 
 	elif [ $REPLY == "4" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
+		clear
 		exit;
 
 	fi
