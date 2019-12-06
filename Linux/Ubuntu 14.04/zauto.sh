@@ -38,7 +38,7 @@ PWDt=$(pwd)
 #Updates 
 aptf() {
  echo "Updating System"
-  echo "$(date +'%m/%d/%Y %r'): Updating System" >> $PWDt/log/oats.log
+  echo "$(date +'%m/%d/%Y %r'): Updating System" >> $PWDt./log/oats.log
     sudo chattr -i /etc/apt/sources.list
     sudo chmod 777 /etc/apt/sources.list
     sudo apt-get upgrade
@@ -49,7 +49,7 @@ aptf() {
 #Remove 
 erase() {
  echo "Removing Apps, Media, and Services"
-  echo "$(date +'%m/%d/%Y %r'): Removing Apps, Media, and Services" >> $PWDt/log/oats.log
+  echo "$(date +'%m/%d/%Y %r'): Removing Apps, Media, and Services" >> $PWDt./log/oats.log
    chmod +x ./script/purge.sh 
    sudo ./script/purge.sh 
   stop
@@ -58,7 +58,7 @@ erase() {
 #Firewall
 fire() {
  echo "Hardening the firewall"
-  echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt/log/oats.log
+  echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt./log/oats.log
    chmod +x ./script/firewall.sh
    sudo ./script/firewall.sh
   stop
@@ -66,7 +66,7 @@ fire() {
 
 #Firewall Extra 
 firecont() {
-  echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt/log/oats.log
+  echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt./log/oats.log
    chmod +x ./script/firecont.sh
    sudo ./script/firecont.sh
   stop
@@ -75,7 +75,7 @@ firecont() {
 #Passwd Policies
 passif() {
  echo "Updating Password Policies"
-  echo "$(date +'%m/%d/%Y %r'): Updating Password Policies" >> $PWDt/log/oats.log
+  echo "$(date +'%m/%d/%Y %r'): Updating Password Policies" >> $PWDt./log/oats.log
    chmod +x ./script/pass.sh
    sudo ./script/pass.sh
   stop
@@ -84,17 +84,17 @@ passif() {
 #UID root check
 zeroUid() {
  echo "Checking for 0Uid"
-  echo "$(date +'%m/%d/%Y %r'): Checking for Root Users" >> $PWDt/log/oats.log
+  echo "$(date +'%m/%d/%Y %r'): Checking for Root Users" >> $PWDt./log/oats.log
   chmod +x ./script/pass.sh
   sudo ./script/zeroUid.sh
  stop
 }
 
 
-Users Accounts
+#Users Accounts
 usersif() {
  echo "Adding, Removing, or Promoting User Accounts"
-  echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt/log/oats.log
+  echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt./log/oats.log
  echo "Copy the README users into the txt file"
   sudo ./script/users.sh
  stop
@@ -104,7 +104,7 @@ usersif() {
 #Account Policy
 accountif() {
  echo "Changing User Account Policies"
-  echo "$(date +'%m/%d/%Y %r'): Changing User Account Policies" >> $PWDt/log/oats.log
+  echo "$(date +'%m/%d/%Y %r'): Changing User Account Policies" >> $PWDt./log/oats.log
    chmod +x ./script/account.sh
    sudo ./script/account.sh
   stop
@@ -113,7 +113,7 @@ accountif() {
 #Installation
 aptint() {
  echo "Intalling Software"
-  echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> $PWDt/log/oats.log
+  echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> $PWDt./log/oats.log
    chmod +x ./script/install.sh
    sudo ./script/install.sh
   stop
@@ -125,7 +125,7 @@ stop() {
 	read continu
 	if [ "$continu" = "N" ] || [ "$continu" = "n" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
-		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/oats.log
+		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt./log/oats.log
 		exit;
 	fi
 }
@@ -178,8 +178,8 @@ read_choice() {
 	elif [ $REPLY == "6" ]; then
 		zeroUid;
 		
-	#elif [ $REPLY == "7" ]; then
-	#	usersif;
+	elif [ $REPLY == "7" ]; then
+		usersif;
 		
 	elif [ $REPLY == "8" ]; then
 		accountif;
@@ -197,11 +197,11 @@ read_choice() {
 		aptint;
 
 	elif [ $REPLY == "11" ]; then
-		gedit $PWDt/log/oats.log
+		gedit $PWDt./log/oats.log
 
 	elif [ $REPLY == "12" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
-		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt/log/oats.log
+		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt./log/oats.log
 		exit;
 
 	fi
