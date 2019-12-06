@@ -65,17 +65,6 @@ zeroUid() {
  stop
 }
 
-#-------------------------ERROR------------------
-#Users Accounts
-#usersif() {
-# echo "Adding, Removing, or Promoting User Accounts"
-#  echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt./log/oats.log
-# echo "Copy the README users into the txt file"
-#  sudo ./script/users.sh
-# stop
-#}
-#------------------------------------
-
 #Account Policy
 accountif() {
  echo "Changing User Account Policies"
@@ -127,12 +116,11 @@ menu() {
 	echo "4) Stronger Firewall"				#firecont
 	echo "5) Update Passwd Policies users"			#passif
 	echo "6) Check for UID's of 0 (Root Access Acounts)"	#zeroUid
-	echo "7) Add, Remove, or Promotes User Accounts" 	#usersif
-	echo "8) User Account Policies" 			#accountif
-	echo "9) Intall Software" 				#aptint
-	echo "10) Auto Run" 					#runs all programs besides usersif and firecont
-	echo "11) Open Log"
-	echo "12) Exit"
+	echo "7) User Account Policies" 			#accountif
+	echo "8) Intall Software" 				#aptint
+	echo "9) Auto Run" 					#runs all programs besides usersif and firecont
+	echo "10) Open Log"
+	echo "11) Exit"
 }
 
 #Menu Selections
@@ -159,13 +147,10 @@ read_choice() {
 	elif [ $REPLY == "7" ]; then
 		usersif;
 		
-	#elif [ $REPLY == "8" ]; then
-	#	accountif;
-	
-	elif [ $REPLY == "9" ]; then
+	elif [ $REPLY == "8" ]; then
 		aptint;
 		
-	elif [ $REPLY == "10" ]; then
+	elif [ $REPLY == "9" ]; then
 		aptf;
 		erase;
 		fire;
@@ -174,10 +159,10 @@ read_choice() {
 		accountif;
 		aptint;
 
-	elif [ $REPLY == "11" ]; then
+	elif [ $REPLY == "10" ]; then
 		gedit ./log/oats.txt
 
-	elif [ $REPLY == "12" ]; then
+	elif [ $REPLY == "11" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
 		echo "$(date +'%m/%d/%Y %r'): Ending script" >> ./log/oats.txt
 		exit;
