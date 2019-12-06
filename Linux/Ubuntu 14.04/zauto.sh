@@ -50,8 +50,8 @@ aptf() {
 erase() {
  echo "Removing Apps, Media, and Services"
   echo "$(date +'%m/%d/%Y %r'): Removing Apps, Media, and Services" >> $PWDt/log/oats.log
-   chmod +x ~/script/purge.sh 
-   sudo ~/script/purge.sh 
+   chmod +x ./script/purge.sh 
+   sudo ./script/purge.sh 
   stop
 }
 
@@ -59,16 +59,16 @@ erase() {
 fire() {
  echo "Hardening the firewall"
   echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt/log/oats.log
-   chmod +x ~/script/firewall.sh
-   sudo ~/script/firewall.sh
+   chmod +x ./script/firewall.sh
+   sudo ./script/firewall.sh
   stop
 }
 
 #Firewall Extra 
 firecont() {
   echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt/log/oats.log
-   chmod +x ~/script/firecont.sh
-   sudo ~/script/firecont.sh
+   chmod +x ./script/firecont.sh
+   sudo ./script/firecont.sh
   stop
 } 
 
@@ -76,8 +76,8 @@ firecont() {
 passif() {
  echo "Updating Password Policies"
   echo "$(date +'%m/%d/%Y %r'): Updating Password Policies" >> $PWDt/log/oats.log
-   chmod +x ~/script/pass.sh
-   sudo ~/script/pass.sh
+   chmod +x ./script/pass.sh
+   sudo ./script/pass.sh
   stop
 }
 
@@ -85,8 +85,8 @@ passif() {
 zeroUid() {
  echo "Checking for 0Uid"
   echo "$(date +'%m/%d/%Y %r'): Checking for Root Users" >> $PWDt/log/oats.log
-  chmod +x ~/script/pass.sh
-  sudo ~/script/zeroUid.sh
+  chmod +x ./script/pass.sh
+  sudo ./script/zeroUid.sh
  stop
 }
 
@@ -96,7 +96,7 @@ usersif() {
  echo "Adding, Removing, or Promoting User Accounts"
   echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt/log/oats.log
  echo "Copy the README users into the txt file"
-  sudo ~/script/users.sh
+  sudo ./script/users.sh
  stop
 }
 
@@ -105,8 +105,8 @@ usersif() {
 accountif() {
  echo "Changing User Account Policies"
   echo "$(date +'%m/%d/%Y %r'): Changing User Account Policies" >> $PWDt/log/oats.log
-   chmod +x ~/script/account.sh
-   sudo ~/script/account.sh
+   chmod +x ./script/account.sh
+   sudo ./script/account.sh
   stop
 }
 
@@ -114,8 +114,8 @@ accountif() {
 aptint() {
  echo "Intalling Software"
   echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> $PWDt/log/oats.log
-   chmod +x ~/script/install.sh
-   sudo ~/script/install.sh
+   chmod +x ./script/install.sh
+   sudo ./script/install.sh
   stop
 } 
 
