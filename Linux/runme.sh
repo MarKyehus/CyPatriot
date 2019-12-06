@@ -49,7 +49,7 @@ choose() {
 	if  [ $REPLY == "1" ]; then
 		oldbuntu;
 		
-	if  [ $REPLY == "2" ]; then
+	elif  [ $REPLY == "2" ]; then
 		newbuntu;
 
 	elif [ $REPLY == "4" ]; then
