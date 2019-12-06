@@ -11,7 +11,7 @@ fi
 #Ubuntu 14.04
 oldbuntu() {
  echo "Entering Ubuntu 14.04"
- cd Ununtu\14.04
+ cd Ubuntu\14.04
    chmod +x zauto.sh
    ./zauto.sh
 }
