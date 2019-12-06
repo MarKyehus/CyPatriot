@@ -17,7 +17,12 @@ oldbuntu() {
 }
 
 #Ubuntu 16.10
-
+newbuntu() {
+ echo "Entering Ubuntu 16.10"
+ cd Ubuntu\ 16.10
+   chmod +x runme.sh
+   ./runme.sh
+}
 #Debian
 
 main() {
@@ -34,7 +39,7 @@ echo "------------------"
 echo "What flavor of linux are you running?"
 echo "------------------"
 echo "1) Ubuntu 14.04"      # Completed
-echo "2) Ubuntu 16.10"      # Incomplete
+echo "2) Ubuntu 16.10"      # Completed
 echo "3) Debian"            # Incomplete 
 echo "4) Exit"              
 }
@@ -43,6 +48,9 @@ choose() {
 	read -p "Enter choice 1-4: "
 	if  [ $REPLY == "1" ]; then
 		oldbuntu;
+		
+	if  [ $REPLY == "2" ]; then
+		newbuntu;
 
 	elif [ $REPLY == "4" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
