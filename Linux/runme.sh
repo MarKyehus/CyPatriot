@@ -11,8 +11,8 @@ fi
 #Ubuntu 14.04
 oldbuntu() {
  echo "Entering Ubuntu 14.04"
-   cd ..
-   cd CyPatriot/Linux/Ubuntu\ 14.04
+   chmod +x zauto.sh
+   ./zauto.sh
 }
 
 #Ubuntu 16.10
