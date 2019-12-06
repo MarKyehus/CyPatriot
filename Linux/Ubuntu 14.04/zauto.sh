@@ -2,120 +2,97 @@
 #Author: Imagine Virt [12-3253], OATS 
 #Title: WCTA Cyberpatriot Script, Linux 
 
-#Variables
-PWDt=$(pwd)
-
-#---------------------------------ERROR-----------------------------------------------
-#Startup   
-#echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude"
-#echo "$(date +'%m/%d/%Y %r'): Verifying an internet connection with aptitude" >> $PWDt/log/oats.log
-#apt-get install cowsay -y &> /dev/null
-#if [ "$?" -eq "1" ]; then
-#   echo "$(date +'%m/%d/%Y %r'): This script cannot access aptitude properly."
-#   echo "$(date +'%m/%d/%Y %r'): Apititude check failed" >> $PWDt/log/oats.log
-#   exit 1
-#fi
-#unalias -a
-#echo "unalias -a" >> ~/.bashrc
-#echo "unalias -a" >> /root/.bashrc
-#echo "$(date +'%m/%d/%Y %r'): Starting script" >> $PWDt/log/oats.log
-
-#if ! [ -d $PWDt/config ]; then
-#	echo "$(date +'%m/%d/%Y %r'): Please Cd into Ubuntu 14.40 directory and run the script there."
-#	echo "$(date +'%m/%d/%Y %r'): Please Cd into Ubuntu 14.40 directory and run the script there." >> $PWDt/log/oats.log
-#	exit
-#fi
-
-#if [ "$EUID" -ne 0 ]; then
-#	echo "$(date +'%m/%d/%Y %r'): Run as Root" 
-#	echo "$(date +'%m/%d/%Y %r'): Run as Root" >> $PWDt/log/oats.log
-#	exit
-#fi
-#--------------------------------------------------------------------------------------------
-
 ## Functions ##
 
 #Updates 
 aptf() {
  echo "Updating System"
-  echo "$(date +'%m/%d/%Y %r'): Updating System" >> $PWDt./log/oats.log
+ echo "$(date +'%m/%d/%Y %r'): Updating System" >> ./log/oats.txt
     sudo chattr -i /etc/apt/sources.list
     sudo chmod 777 /etc/apt/sources.list
     sudo apt-get upgrade
     sudo apt-get update
+ echo "$(date +'%m/%d/%Y %r'): Updated System" >> ./log/oats.txt
    stop
 }
 
 #Remove 
 erase() {
  echo "Removing Apps, Media, and Services"
-  echo "$(date +'%m/%d/%Y %r'): Removing Apps, Media, and Services" >> $PWDt./log/oats.log
+ echo "$(date +'%m/%d/%Y %r'): Removing Apps, Media, and Services" >> ./log/oats.txt
    chmod +x ./script/purge.sh 
    sudo ./script/purge.sh 
+ echo "$(date +'%m/%d/%Y %r'): Removed Apps, Media, and Services" >> ./log/oats.txt
   stop
 }
 
 #Firewall
 fire() {
  echo "Hardening the firewall"
-  echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt./log/oats.log
+ echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> ./log/oats.txt
    chmod +x ./script/firewall.sh
    sudo ./script/firewall.sh
+ echo "$(date +'%m/%d/%Y %r'): Updated Firewall" >> ./log/oats.txt
   stop
 }
 
 #Firewall Extra 
 firecont() {
-  echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> $PWDt./log/oats.log
+ echo "$(date +'%m/%d/%Y %r'): Updating Firewall" >> ./log/oats.txt
    chmod +x ./script/firecont.sh
    sudo ./script/firecont.sh
+ echo "$(date +'%m/%d/%Y %r'): Updated Firewall" >> ./log/oats.txt
   stop
 } 
 
 #Passwd Policies
 passif() {
  echo "Updating Password Policies"
-  echo "$(date +'%m/%d/%Y %r'): Updating Password Policies" >> $PWDt./log/oats.log
+ echo "$(date +'%m/%d/%Y %r'): Updating Password Policies" >> ./log/oats.txt
    chmod +x ./script/pass.sh
    sudo ./script/pass.sh
+ echo "$(date +'%m/%d/%Y %r'): Updated Password Policies" >> ./log/oats.txt
   stop
 }
 
 #UID root check
 zeroUid() {
  echo "Checking for 0Uid"
-  echo "$(date +'%m/%d/%Y %r'): Checking for Root Users" >> $PWDt./log/oats.log
+ echo "$(date +'%m/%d/%Y %r'): Checking for Root Users" >> ./log/oats.txt
   chmod +x ./script/pass.sh
   sudo ./script/zeroUid.sh
+ echo "$(date +'%m/%d/%Y %r'): Checked for Root Users" >> ./log/oats.txt
  stop
 }
 
-
+#-------------------------ERROR------------------
 #Users Accounts
-usersif() {
- echo "Adding, Removing, or Promoting User Accounts"
-  echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt./log/oats.log
- echo "Copy the README users into the txt file"
-  sudo ./script/users.sh
- stop
-}
-
+#usersif() {
+# echo "Adding, Removing, or Promoting User Accounts"
+#  echo "$(date +'%m/%d/%Y %r'): Adding, Removing, or Promoting User Accounts" >> $PWDt./log/oats.log
+# echo "Copy the README users into the txt file"
+#  sudo ./script/users.sh
+# stop
+#}
+#------------------------------------
 
 #Account Policy
 accountif() {
  echo "Changing User Account Policies"
-  echo "$(date +'%m/%d/%Y %r'): Changing User Account Policies" >> $PWDt./log/oats.log
+ echo "$(date +'%m/%d/%Y %r'): Changing User Account Policies" >> ./log/oats.txt
    chmod +x ./script/account.sh
    sudo ./script/account.sh
+ echo "$(date +'%m/%d/%Y %r'): Changed User Account Policies" >> ./log/oats.txt
   stop
 }
 
 #Installation
 aptint() {
  echo "Intalling Software"
-  echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> $PWDt./log/oats.log
+ echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> ./log/oats.txt
    chmod +x ./script/install.sh
    sudo ./script/install.sh
+ echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> ./log/oats.txt
   stop
 } 
 
@@ -125,7 +102,7 @@ stop() {
 	read continu
 	if [ "$continu" = "N" ] || [ "$continu" = "n" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
-		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt./log/oats.log
+		echo "$(date +'%m/%d/%Y %r'): Ending script" >> ./log/oats.txt
 		exit;
 	fi
 }
@@ -133,6 +110,7 @@ stop() {
 #Menu of Ubuntu 14.04 
 menu() {
 	clear
+	echo "$(date +'%m/%d/%Y %r'): Starting Script" >> ./log/oats.txt
 	echo "
     ____                   ____        _      __ 
    / __ \___  ___ ___     / __/_______(_)__  / /_
@@ -181,8 +159,8 @@ read_choice() {
 	elif [ $REPLY == "7" ]; then
 		usersif;
 		
-	elif [ $REPLY == "8" ]; then
-		accountif;
+	#elif [ $REPLY == "8" ]; then
+	#	accountif;
 	
 	elif [ $REPLY == "9" ]; then
 		aptint;
@@ -197,11 +175,11 @@ read_choice() {
 		aptint;
 
 	elif [ $REPLY == "11" ]; then
-		gedit $PWDt./log/oats.log
+		gedit ./log/oats.txt
 
 	elif [ $REPLY == "12" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
-		echo "$(date +'%m/%d/%Y %r'): Ending script" >> $PWDt./log/oats.log
+		echo "$(date +'%m/%d/%Y %r'): Ending script" >> ./log/oats.txt
 		exit;
 
 	fi
