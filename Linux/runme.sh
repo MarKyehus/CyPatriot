@@ -40,7 +40,7 @@ echo "4) Exit"
 }
 
 choose() {
-	read -p "Enter choice 1-9: "
+	read -p "Enter choice 1-4: "
 	if  [ $REPLY == "1" ]; then
 		oldbuntu;
 
