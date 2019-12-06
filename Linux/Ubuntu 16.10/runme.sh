@@ -96,7 +96,7 @@ stop() {
 	fi
 }
 
-#Menu of Ubuntu 14.04 
+#Menu of Ubuntu 16.10 
 menu() {
 	clear
 	echo "$(date +'%m/%d/%Y %r'): Starting Script" >> ./log/oats.txt
