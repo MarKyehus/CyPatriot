@@ -20,8 +20,8 @@ oldbuntu() {
 newbuntu() {
  echo "Entering Ubuntu 16.10"
  cd Ubuntu\ 16.10
-   chmod +x runme.sh
-   ./runme.sh
+   chmod +x main.sh
+   ./main.sh
 }
 #Debian
 
