@@ -1,7 +1,7 @@
 # Cyber Patriot 
 
 ## How To Use 
-*Scripts can cause penalties and break images*
+*Scripts can cause penalties and break images
 Use http://kinolien.github.io/gitzip/ to download a specific folder in the git
 ### Linux 
 -Do the foresnic questions first-
