@@ -1,8 +1,9 @@
 # Cyber Patriot 
 
 ## How To Use
-*Scripts can cause penalties and break images*
 Use http://kinolien.github.io/gitzip/ to download a specific folder in the git
+*Scripts can cause penalties and break images*
+
 ### Linux 
 -Do the foresnic questions first-
 1. Run open a new terminal window and as root, `sudo su` run `apt update` followed by `apt install git`
