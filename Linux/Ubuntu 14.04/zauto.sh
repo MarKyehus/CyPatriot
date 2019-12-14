@@ -92,9 +92,21 @@ aptint() {
  echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> ./log/oats.txt
    chmod +x ./script/install.sh
    sudo ./script/install.sh
- echo "$(date +'%m/%d/%Y %r'): Intalling Software" >> ./log/oats.txt
+ echo "Intalled Software"
+ echo "$(date +'%m/%d/%Y %r'): Intalled Software" >> ./log/oats.txt
   stop
 } 
+
+#Change Terminal Emulator of User
+zshel() {
+ echo "Changing Terminal"
+ echo "$(date +'%m/%d/%Y %r'): Changing Terminal Emulator" >> ./log/oats.txt
+   chmod +x ./script/temulate.sh
+   sudo ./script/temulate.sh
+ echo "Changed Terminal"
+ echo "$(date +'%m/%d/%Y %r'): Changed Software" >> ./log/oats.txt
+  stop
+ }
 
 #Pause before each sub-script
 stop() {
