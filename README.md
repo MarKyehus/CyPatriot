@@ -1,5 +1,5 @@
 # Cyber Patriot 
-
+![GitHub repo size](https://img.shields.io/github/repo-size/ethanaldrich9986/CSSR)
 ## How To Use
 Use http://kinolien.github.io/gitzip/ to download a specific folder in the git
 
