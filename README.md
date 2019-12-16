@@ -1,4 +1,5 @@
-# Cyber Patriot ![GitHub repo size](https://img.shields.io/github/repo-size/MarKyehus/CyPatriot)
+# Cyber Patriot 
+![GitHub repo size](https://img.shields.io/github/repo-size/MarKyehus/CyPatriot)
 ## How To Use
 Use http://kinolien.github.io/gitzip/ to download a specific folder in the git
 
@@ -10,6 +11,7 @@ Use http://kinolien.github.io/gitzip/ to download a specific folder in the git
 3. `cd CyPatriot/Linux` followed by `chmod +x runme.sh` then `./runme.sh`
 4. Continue through to the end of the script and watch the points sky rocket!
 5. Browse the lists folder and work on compleating the image. Dont forget to read the read me!!
+
 ### Windows and Server
 -Do the foresnic questions first-
 1. Go to https://github.com/MarKyehus/CyPatriot and click `Clone or Download` then `Download ZIP`
