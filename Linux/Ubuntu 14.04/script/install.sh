@@ -10,6 +10,7 @@ then
   # Disable remote access
   sudo sed -i '/bind-address/ c\bind-address = 127.0.0.1' /etc/mysql/my.cnf
   sudo service mysql restart
+   echo "$(date +'%m/%d/%Y %r'): Installed MySQL" >> ./log/oats.txt
 else
   sudo apt-get -y purge mysql*
 fi
@@ -24,6 +25,7 @@ then
   # Disable root login
   sudo sed -i '/^PermitRootLogin/ c\PermitRootLogin no' /etc/ssh/sshd_config
   sudo service ssh restart
+  echo "$(date +'%m/%d/%Y %r'): Installed OpenSSH Server" >> ./log/oats.txt
 else
   sudo apt-get -y purge openssh-server*
 fi
@@ -41,6 +43,7 @@ then
   # FTP user directories use chroot
   sudo sed -i '/^chroot_local_user/ c\chroot_local_user=YES' /etc/vsftpd.conf
   sudo service vsftpd restart
+  echo "$(date +'%m/%d/%Y %r'): Installed VSFTPD" >> ./log/oats.txt
 else
   sudo apt-get -y purge vsftpd*
 fi
@@ -51,6 +54,7 @@ read option
 if [[ $option =~ ^[Yy]$ ]]
 then
   sudo apt-get install chkrootkit rkhunter lynis clamav
+   echo "$(date +'%m/%d/%Y %r'): Installed chkrootkit rkhunter lynis clamav" >> ./log/oats.txt
   #chrootkit 
     echo "starting chkrootkit scan"
       chkrootkit -q
@@ -88,17 +92,19 @@ if [[ $option =~ ^[Yy]$ ]]
 then
   sudo add-apt-repository ppa:gnome3-team/gnome3
   sudo apt-get update && sudo apt-get install gnome-shell ubuntu-gnome-desktop
+  echo "$(date +'%m/%d/%Y %r'): Installed gnome" >> ./log/oats.txt
 else
   sudo apt-get -y purge gnome-shell ubuntu-gnome-desktop*
 fi
 
 # Terminator
-echo -n "Gnome Emulator [Y/n] "
+echo -n "Terminator Emulator [Y/n] "
 read option
 if [[ $option =~ ^[Yy]$ ]]
 then
   sudo add-apt-repository ppa:gnome-terminator
   sudo apt-get update && sudo apt-get install terminator
+  echo "$(date +'%m/%d/%Y %r'): Installed terminator" >> ./log/oats.txt
 else
   sudo apt-get remove --auto-remove terminator
 fi
