@@ -99,13 +99,21 @@ aptint() {
 
 #Change Terminal and User Shell
 zshel() {
+ #Terminal
  echo "Changing Terminal"
  echo "$(date +'%m/%d/%Y %r'): Changing Terminal Emulator" >> ./log/oats.txt
    chmod +x ./script/temulate.sh
    sudo ./script/temulate.sh
  echo "Changed Terminal"
  echo "$(date +'%m/%d/%Y %r'): Changed Terminal" >> ./log/oats.txt
-  stop
+ #Shell
+ echo "Changing Shell"
+ echo "$(date +'%m/%d/%Y %r'): Changing User Shell" >> ./log/oats.txt
+   grep tecmint /etc/passwd
+   usermod --shell /bin/bash $USER
+ echo "Changed Shell"
+ echo "$(date +'%m/%d/%Y %r'): Changed User Shell" >> ./log/oats.txt
+ stop
  }
 
 #Pause before each sub-script
