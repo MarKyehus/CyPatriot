@@ -23,6 +23,7 @@ newbuntu() {
    chmod +x main.sh
    ./main.sh
 }
+
 #Debian
 
 main() {
