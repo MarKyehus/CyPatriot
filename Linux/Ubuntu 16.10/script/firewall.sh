@@ -36,10 +36,13 @@ echo "securing the firewall"
  echo "30" > /proc/sys/net/ipv4/tcp_fin_timeout
 # Sometimes, packet reordering in a network can be interpreted as packet loss and hence increasing the value of this parameter should improve performance (default is “3″)
  echo "15" > /proc/sys/net/ipv4/tcp_reordering
-# Control congestion of tcp
+#
  echo "cubic" > /proc/sys/net/ipv4/tcp_congestion_control
 # Disable Core Dumps
  echo "0" > /proc/sys/fs/suid_dumpable
+# Enable ExecShield
+ echo "1" > /proc/sys/kernel/exec-shield
+ echo "1" > /proc/sys/kernel/randomize_va_space
  
 # Network parameters for better security #
 
@@ -68,6 +71,8 @@ echo "securing the firewall"
 # Disable IPV6
  echo "1" > /proc/sys/net/ipv6/conf/all/disable_ipv6
  echo "1" > /proc/sys/net/ipv6/conf/default/disable_ipv6 
+#Prevent IP spoofing
+# echo "nospoof on" > sudo tee -a /etc/host.conf    #ERROR
  
 # File system tuning #
 
