@@ -116,6 +116,28 @@ zshel() {
  stop
  }
 
+#Linpeas
+linpeas() {
+ echo "Checking Device"
+ echo "$(date +'%m/%d/%Y %r'): Checking Device" >> ./log/oats.txt
+   chmod +x ./script/linpeas.sh
+   sudo ./script/linpeas.sh
+ echo "Checked Device"
+ echo "$(date +'%m/%d/%Y %r'): Checked Device" >> ./log/oats.txt
+  stop
+}
+
+#Linenum
+linenum() {
+ echo "Checking Device"
+ echo "$(date +'%m/%d/%Y %r'): Checking Device" >> ./log/oats.txt
+   chmod +x ./script/LinEnum.sh
+   sudo ./script/LinEnum.sh
+ echo "Checked Device"
+ echo "$(date +'%m/%d/%Y %r'): Checked Device" >> ./log/oats.txt
+  stop
+}
+
 #Pause before each sub-script
 stop() {
 	echo "Continue? (Y/N) "
@@ -150,10 +172,12 @@ menu() {
 	echo "7) Add, Remove, or Promotes User Accounts" 	#usersif 	     ERROR
 	echo "8) User Account Policies" 			#accountif
 	echo "9) Intall Software" 				#aptint
-	echo "11) Change Terminal and Shell" 			#zshel
-	echo "12) Auto Run" 					#runs all programs besides usersif and firecont
-	echo "13) Open Log"
-	echo "14) Exit"
+	echo "10) Change Terminal and Shell" 			#zshel
+	echo "11) Check with LinPeas" 				#linpeas
+	echo "12) Check with LinEnum"				#linenum
+	echo "13) Auto Run" 					#runs all programs besides usersif and firecont
+	echo "14) Open Log"
+	echo "15) Exit"
 }
 
 #Menu Selections
@@ -190,6 +214,12 @@ read_choice() {
 		zshel;
 		
 	elif [ $REPLY == "11" ]; then
+		linpeas;
+		
+	elif [ $REPLY == "12" ]; then
+		linenum;
+		
+	elif [ $REPLY == "13" ]; then
 		aptf;
 		erase;
 		fire;
@@ -199,10 +229,10 @@ read_choice() {
 		aptint;
 		zshel;
 
-	elif [ $REPLY == "12" ]; then
+	elif [ $REPLY == "14" ]; then
 		gedit ./log/oats.txt
 
-	elif [ $REPLY == "13" ]; then
+	elif [ $REPLY == "15" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
 		echo "$(date +'%m/%d/%Y %r'): Ending script" >> ./log/oats.txt
 		exit;
