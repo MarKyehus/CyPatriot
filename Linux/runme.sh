@@ -40,7 +40,7 @@ echo "------------------"
 echo "What flavor of linux are you running?"
 echo "------------------"
 echo "1) Ubuntu 14.04"      # Completed
-echo "2) Ubuntu 16.10"      # Completed
+echo "2) Ubuntu 16.10"      # Update
 echo "3) Debian"            # Incomplete 
 echo "4) Exit"              
 }
