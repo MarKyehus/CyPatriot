@@ -109,7 +109,7 @@ zshel() {
  #Shell
  echo "Changing Shell"
  echo "$(date +'%m/%d/%Y %r'): Changing User Shell" >> ./log/oats.txt
-   grep tecmint /etc/passwd
+   grep $USER /etc/passwd
    usermod --shell /bin/bash $USER
  echo "Changed Shell"
  echo "$(date +'%m/%d/%Y %r'): Changed User Shell" >> ./log/oats.txt
@@ -163,15 +163,15 @@ menu() {
 	echo "------------------"
 	echo " M A I N _ M E N U"
 	echo "------------------"
-	echo "1) Updates System"				#aptf
-	echo "2) Purges Media, Services, Apps"			#erase
-	echo "3) Update the Firewall"				#fire
-	echo "4) Stronger Firewall"				#firecont
-	echo "5) Update Passwd Policies users"			#passif
-	echo "6) Check for UID's of 0 (Root Access Acounts)"	#zeroUid
-	echo "7) Add, Remove, or Promotes User Accounts" 	#usersif 	     ERROR
-	echo "8) User Account Policies" 			#accountif
-	echo "9) Intall Software" 				#aptint
+	echo "1)  Updates System"				#aptf
+	echo "2)  Purges Media, Services, Apps"			#erase
+	echo "3)  Update the Firewall"				#fire
+	echo "4)  Stronger Firewall"				#firecont
+	echo "5)  Update Passwd Policies users"			#passif
+	echo "6)  Check for UID's of 0 (Root Access Acounts)"	#zeroUid
+	echo "7)  Add, Remove, or Promotes User Accounts" 	#usersif 	     ERROR
+	echo "8)  User Account Policies" 			#accountif
+	echo "9)  Intall Software" 				#aptint
 	echo "10) Change Terminal and Shell" 			#zshel
 	echo "11) Check with LinPeas" 				#linpeas
 	echo "12) Check with LinEnum"				#linenum
