@@ -141,7 +141,7 @@ linenum() {
 #Pause before each sub-script
 stop() {
 	echo "Continue? (Y/N) "
-	read continu
+	read -r continu
 	if [ "$continu" = "N" ] || [ "$continu" = "n" ]; then
 		echo "$(date +'%m/%d/%Y %r'): Ending script"
 		echo "$(date +'%m/%d/%Y %r'): Ending script" >> ./log/oats.txt
